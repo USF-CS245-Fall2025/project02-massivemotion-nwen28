@@ -170,11 +170,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
             body.x += celestialBodies.get(i).getVelX();
             body.y += celestialBodies.get(i).getVelY();
 
-            if(body.getX() > windowSizeX || body.getX() < 0){
-                celestialBodies.remove(i);
-            }
-
-            if(body.getY() > windowSizeY || body.getY() < 0){
+            if(body.getX() > windowSizeX || body.getX() < 0 || body.getY() > windowSizeY || body.getY() < 0){
                 celestialBodies.remove(i);
             }
 
