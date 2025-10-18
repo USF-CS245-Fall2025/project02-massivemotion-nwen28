@@ -9,9 +9,14 @@ import java.util.Properties;
 public class MassiveMotion extends JPanel implements ActionListener {
 
     protected Timer tm;
+    //protected Timer tm = new Timer(delay, this);
 
     int windowSizeX;
     int windowSizeY;
+    double genX;
+    double genY;
+    int bodyVelocity;
+    int bodySize;
 
     List<CelestialBody> celestialBodies;
 
@@ -39,11 +44,11 @@ public class MassiveMotion extends JPanel implements ActionListener {
         windowSizeX = Integer.parseInt(prop.getProperty("window_size_x"));
         windowSizeY = Integer.parseInt(prop.getProperty("window_size_y"));
 
-        double genX = Double.parseDouble(prop.getProperty("gen_x"));
-        double genY = Double.parseDouble(prop.getProperty("gen_y"));
+        genX = Double.parseDouble(prop.getProperty("gen_x"));
+        genY = Double.parseDouble(prop.getProperty("gen_y"));
 
-        int bodySize = Integer.parseInt(prop.getProperty("body_size"));
-        int bodyVelocity = Integer.parseInt(prop.getProperty("body_velocity"));
+        bodySize = Integer.parseInt(prop.getProperty("body_size"));
+        bodyVelocity = Integer.parseInt(prop.getProperty("body_velocity"));
 
         int starPosX = Integer.parseInt(prop.getProperty("star_position_x"));
         int starPosY = Integer.parseInt(prop.getProperty("star_position_y"));
@@ -71,8 +76,8 @@ public class MassiveMotion extends JPanel implements ActionListener {
         tm = new Timer(delay, this); // TODO: Replace the first argument with delay with value from config file.
 
         // TODO: Consider removing the next two lines (coordinates) for random starting locations.
-        x1 = 100; y1 = 50;
-        x2 = 200; y2 = 400;
+        //x1 = 100; y1 = 50;
+        //x2 = 200; y2 = 400;
     }
 
     public void paintComponent(Graphics g) {
@@ -97,15 +102,83 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        // TODO: Change the location of each ball. Here's an example of them moving across the screen:
-        //       ... but to be clear, you should change this.
-        x1 += 10;
-        x2 -= 15;
-        // These two "if" statements keep the balls on the screen in case they go off one side.
-        if (x1 > 640)
-            x1 = 0;
-        if (x2 < 0)
-            x2 = 640;
+
+        if(Math.random() <= genX){
+            boolean spawnLocation;
+            int x = (int)(Math.random() * windowSizeX);
+            int y;
+            if(Math.random() <= 0.5){
+                spawnLocation = true;
+            } else{
+                spawnLocation = false;
+            }
+
+            if(spawnLocation == true){
+                y = 0;
+            } else{
+                y = windowSizeY;
+            }
+
+            int velX = 0;
+            int velY = 0;
+
+            while(velX == 0){
+                velX = (int)(Math.random() * (bodyVelocity - (-bodyVelocity) + 1)) + (-bodyVelocity);
+            }
+
+            while(velY == 0){
+                velY = (int)(Math.random() * (bodyVelocity - (-bodyVelocity) + 1)) + (-bodyVelocity);
+            }
+            
+            CelestialBody newBody = new CelestialBody(x, y, velX, velY, bodySize, Color.BLACK);
+            celestialBodies.add(newBody);
+        }
+
+        if(Math.random() <= genY){
+            boolean spawnLocation;
+            int y = (int)(Math.random() * windowSizeY);
+            int x;
+            if(Math.random() <= 0.5){
+                spawnLocation = true;
+            } else{
+                spawnLocation = false;
+            }
+
+            if(spawnLocation == true){
+                x = 0;
+            } else{
+                x = windowSizeX;
+            }
+
+            int velX = 0;
+            int velY = 0;
+
+            while(velX == 0){
+                velX = (int)(Math.random() * (bodyVelocity - (-bodyVelocity) + 1)) + (-bodyVelocity);
+            }
+
+            while(velY == 0){
+                velY = (int)(Math.random() * (bodyVelocity - (-bodyVelocity) + 1)) + (-bodyVelocity);
+            }
+            
+            CelestialBody newBody = new CelestialBody(x, y, velX, velY, bodySize, Color.BLACK);
+            celestialBodies.add(newBody);
+        }
+
+        for(int i = celestialBodies.size()-1; i >= 0; i--){
+            CelestialBody body = celestialBodies.get(i);
+            body.x += celestialBodies.get(i).getVelX();
+            body.y += celestialBodies.get(i).getVelY();
+
+            if(body.getX() > windowSizeX || body.getX() < 0){
+                celestialBodies.remove(i);
+            }
+
+            if(body.getY() > windowSizeY || body.getY() < 0){
+                celestialBodies.remove(i);
+            }
+
+        }
 
         // Keep this at the end of the function (no matter what you do above):
         repaint();
@@ -124,3 +197,6 @@ public class MassiveMotion extends JPanel implements ActionListener {
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
+
+
+//test to see if this works
