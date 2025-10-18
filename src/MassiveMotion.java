@@ -18,6 +18,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
     int bodyVelocity;
     int bodySize;
 
+
     List<CelestialBody> celestialBodies;
 
     // TODO: Consider removing the next two lines (coordinates for two balls)
@@ -57,6 +58,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
         int star_velocityY = Integer.parseInt(prop.getProperty("star_velocity_y"));
 
         String listType = prop.getProperty("list");
+        System.out.println("Using a: " + listType);
 
         if(listType.equalsIgnoreCase("arraylist")){
             celestialBodies = new ArrayList<>();
@@ -182,6 +184,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
     public static void main(String[] args) {
         System.out.println("Massive Motion starting...");
+        
         MassiveMotion mm = new MassiveMotion(args[0]);
         //MassiveMotion mm = new MassiveMotion();
 
