@@ -66,7 +66,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
         } else if(listType.equalsIgnoreCase("double")){
             celestialBodies = new DoublyLinkedList<>();
         } else if(listType.equalsIgnoreCase("dummyhead")){
-            //Dummy Head
+            celestialBodies = new DummyHeadLinkedList<>();
         }
 
         CelestialBody star = new CelestialBody(starPosX, starPosY, starVelocityX, star_velocityY, starSize, Color.RED);
