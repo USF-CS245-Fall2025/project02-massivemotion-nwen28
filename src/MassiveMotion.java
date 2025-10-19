@@ -9,7 +9,6 @@ import java.util.Properties;
 public class MassiveMotion extends JPanel implements ActionListener {
 
     protected Timer tm;
-    //protected Timer tm = new Timer(delay, this);
 
     int windowSizeX;
     int windowSizeY;
@@ -37,7 +36,7 @@ public class MassiveMotion extends JPanel implements ActionListener {
             prop.load(filename);
             filename.close();
         } catch (IOException e){
-            System.out.println("Erorr happened");
+            System.out.println("File Not Found");
         }
 
         int delay = Integer.parseInt(prop.getProperty("timer_delay"));

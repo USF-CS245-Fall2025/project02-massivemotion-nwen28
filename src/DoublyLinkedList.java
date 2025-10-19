@@ -32,7 +32,7 @@ public class DoublyLinkedList<T> implements List<T>{
 
         Node<T> newNode = new Node(item);
 
-        if (size == 0) {
+        if(size == 0){
             head = newNode;
             tail = newNode;
         } else{
