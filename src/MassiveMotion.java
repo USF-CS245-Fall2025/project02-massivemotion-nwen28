@@ -58,7 +58,6 @@ public class MassiveMotion extends JPanel implements ActionListener {
         int star_velocityY = Integer.parseInt(prop.getProperty("star_velocity_y"));
 
         String listType = prop.getProperty("list");
-        System.out.println("Using a: " + listType);
 
         //Checks what type of list the property file specifies and changes the list
         // initialized at the top to the now specified type of list
