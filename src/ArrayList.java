@@ -1,3 +1,6 @@
+
+// ArrayList class which implements the List interface.
+//Has grow_array. add, add at position, and remove
 public class ArrayList<T> implements List<T> {
     private class ListIterator implements Iterator<T> {
         protected int pos = 0;
@@ -28,6 +31,9 @@ public class ArrayList<T> implements List<T> {
         return size;
     }
 
+    /** grow_array method doubles size of arraylist
+     * 
+     */
     protected void grow_array() {
     T[] new_arr = (T[]) new Object[arr.length * 2];
         for (int i = 0; i < arr.length; i++){
@@ -37,6 +43,9 @@ public class ArrayList<T> implements List<T> {
         arr = new_arr;
     }
 
+    /** add method, takes in an item and adds it to the arraylist
+     * @param T item data that is being added to arraylist
+     */
     @Override
     public boolean add(T item) {
         if (size == arr.length - 1){
@@ -47,6 +56,10 @@ public class ArrayList<T> implements List<T> {
         return true;
     }
 
+    /** add method, takes in an item and an index of where the item should be added to
+     * @param integer pos for the index of where the item should be added
+     * @param T item, data that's being added
+     */
     @Override
     public void add(int pos, T item) {
         if (pos < 0 || pos > size){
@@ -64,6 +77,9 @@ public class ArrayList<T> implements List<T> {
         ++size;
     }
 
+    /** remove method, takes in an index of which the item at that index will be removed
+     *  @param integer pos, index of the element that will be removed
+     */
     @Override
     public T remove(int pos) {
         if (pos < 0 || pos >= size){
@@ -77,6 +93,10 @@ public class ArrayList<T> implements List<T> {
         --size;
         return copy;
     }
+
+    /** get method, takes in an index and returns the element at that index
+     * @param integer pos, index of the element
+     */
     @Override
     public T get(int pos) {
         if (pos < 0 || pos >= size){

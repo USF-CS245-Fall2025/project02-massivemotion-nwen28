@@ -1,3 +1,8 @@
+
+/** DoublyLinkedList class which implements the List interface
+ * functions similar to a linkedlist but now keeps track of the previous 
+ * node as well. 
+ */
 public class DoublyLinkedList<T> implements List<T>{
     
     private class Node<T> {
@@ -27,6 +32,9 @@ public class DoublyLinkedList<T> implements List<T>{
         return size;
     }
 
+    /** add method, takes in an item and adds it to the arraylist
+     * @param T item data that is being added to arraylist
+     */
     @Override
     public boolean add(T item) {
 
@@ -44,6 +52,10 @@ public class DoublyLinkedList<T> implements List<T>{
         return true;
     }
 
+    /** add method, takes in an item and an index of where the item should be added to
+     * @param integer pos for the index of where the item should be added
+     * @param T item, data that's being added
+     */
     public void add(int pos, T item){
         if (pos < 0 || pos > size){
             throw new IndexOutOfBoundsException("List index OOB");
@@ -78,6 +90,9 @@ public class DoublyLinkedList<T> implements List<T>{
         size++;
     }
 
+    /** remove method, takes in an index of which the item at that index will be removed
+     *  @param integer pos, index of the element that will be removed
+     */
     public T remove(int pos){
         if (pos < 0 || pos > size){
             throw new IndexOutOfBoundsException("List index OOB");
@@ -117,19 +132,24 @@ public class DoublyLinkedList<T> implements List<T>{
         return current.data;
     }
 
+    /** get method, takes in an index and returns the element at that index
+     * @param integer pos, index of the element
+     */
     @Override
-public T get(int pos) {
-    if (pos < 0 || pos >= size) {
-        throw new IndexOutOfBoundsException("List index OOB");
-    }
+    public T get(int pos) {
+        if (pos < 0 || pos >= size) {
+            throw new IndexOutOfBoundsException("List index OOB");
+        }
 
-    Node<T> current = head;
-    for (int i = 0; i < pos; i++) {
-        current = current.next;
-    }
+        Node<T> current = head;
 
-    return current.data;
-}
+        //Moves current node to the next node until it reaches the desired index/position
+        for (int i = 0; i < pos; i++) {
+            current = current.next;
+        }
+
+        return current.data;
+    }
 
     @Override
     public Iterator<T> iterator() {
@@ -139,11 +159,17 @@ public T get(int pos) {
     private class ListIterator implements Iterator<T> {
         private Node<T> node = head;
 
+        /** hasNext method, checks if the next node
+         *  is null or not
+         */
         @Override
         public boolean hasNext() {
             return node != null;
         }
 
+        /** next method, moves to the next node
+         * @return T data
+         */
         @Override
         public T next() {
             if (!hasNext()) {

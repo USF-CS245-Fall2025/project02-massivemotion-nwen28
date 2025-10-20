@@ -1,5 +1,9 @@
 import java.awt.Color;
 
+/** CelestialBody class takes in x and y coordinates, x and y velocities,
+ * size, and color of a celestial object and stores all that information
+ * into a CelestialBody object
+ */
 public class CelestialBody {
     public int x;
     public int y;
@@ -8,6 +12,7 @@ public class CelestialBody {
     public int size;
     public Color color;
 
+    //Constructor for CelestialBody
     public CelestialBody(int x, int y, double velocityX, double velocityY, int size, Color color){
         this.x = x;
         this.y = y;

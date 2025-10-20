@@ -17,12 +17,12 @@ public class MassiveMotion extends JPanel implements ActionListener {
     int bodyVelocity;
     int bodySize;
 
-    //Initializes unspecified list
+    //Initializes unspecified list type
     List<CelestialBody> celestialBodies;
 
     /** MassiveMotion method opens, loads, and reads the property file
      * and creates the star object from the file and determines what type of list
-     * celestialBodies is
+     * celestialBodies is.
      * @param propfile takes in the name of the property file
      */
     public MassiveMotion(String propfile) {
@@ -206,6 +206,10 @@ public class MassiveMotion extends JPanel implements ActionListener {
         repaint();
     }
 
+    /** main method that runs the project
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Massive Motion starting...");
         

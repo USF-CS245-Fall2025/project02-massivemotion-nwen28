@@ -1,3 +1,8 @@
+
+/** DummyHeadLinkedList class, implements List interface
+ * contains the methods add, add at a position, remove, get,
+ * and also an interator that implements Iterator interface
+ */
 public class DummyHeadLinkedList<T> implements List<T> {
     private class Node<T> {
         T data;
@@ -21,6 +26,9 @@ public class DummyHeadLinkedList<T> implements List<T> {
         return size;
     }
 
+    /** add method, takes in an item and adds it to the arraylist
+     * @param T item data that is being added to arraylist
+     */
     @Override
     public boolean add(T item) {
         
@@ -36,6 +44,10 @@ public class DummyHeadLinkedList<T> implements List<T> {
         return true;
     }
 
+    /** add method, takes in an item and an index of where the item should be added to
+     * @param integer pos for the index of where the item should be added
+     * @param T item, data that's being added
+     */
     @Override
     public void add (int pos, T item) {
         if (pos < 0 || pos > size){
@@ -55,7 +67,9 @@ public class DummyHeadLinkedList<T> implements List<T> {
 
     }
         
-
+    /** remove method, takes in an index of which the item at that index will be removed
+     *  @param integer pos, index of the element that will be removed
+     */
     @Override
     public T remove(int pos) {
         if (pos < 0 || pos >= size){
@@ -75,6 +89,9 @@ public class DummyHeadLinkedList<T> implements List<T> {
         return current.data;
     }
 
+    /** get method, takes in an index and returns the element at that index
+     * @param integer pos, index of the element
+     */
     @Override
     public T get(int pos) {
         if (pos < 0 || pos >= size){
@@ -82,6 +99,8 @@ public class DummyHeadLinkedList<T> implements List<T> {
         }
 
         Node<T> current = head.next;
+
+        //Moves current node to the next node until it reaches the desired index/position
         for(int i = 0; i < pos; i++){
             current = current.next;
         }
@@ -97,11 +116,17 @@ public class DummyHeadLinkedList<T> implements List<T> {
     private class ListIterator implements Iterator<T> {
         private Node<T> node = head.next;
     
+        /** hasNext method, checks if the next node
+         *  is null or not
+         */
         @Override
         public boolean hasNext() {
             return node != null;
         }
     
+        /** next method, moves to the next node
+         * @return T data
+         */
         @Override
         public T next() {
             if (!hasNext()) {
