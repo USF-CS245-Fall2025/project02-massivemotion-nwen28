@@ -3,3 +3,5 @@
 CS 245 Project 02
 
 This project creates a visual representation of celestial bodies moving around a "star". It determines where a new celestial body should appear on the canvas, as well as the velocity of it, and each celestial body that is created moves along that line with the given velocity. The position of each celestial body is updated given by the timer delay that is taken from the property file. Once a celestial object has reached the end of the canvas, it is removed from the list and the canvas. The property file also contains the other information necessary for creating celestial objects such as its size. This project also contains realizations of 4 different types of lists: arraylist, linkedlist, doubly linkedlist, and dummy head linkedlist. These lists are used to keep track and contain all the celestial bodies that are created and removed. 
+
+Running Implementation Video: https://drive.google.com/drive/folders/1t0B3WtoP3YI5X5jXSEvwzA8u9hh7MA0S?usp=sharing
