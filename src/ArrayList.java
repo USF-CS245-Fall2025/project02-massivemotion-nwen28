@@ -1,6 +1,4 @@
-
 // ArrayList class which implements the List interface.
-//Has grow_array. add, add at position, and remove
 public class ArrayList<T> implements List<T> {
     private class ListIterator implements Iterator<T> {
         protected int pos = 0;
@@ -59,6 +57,7 @@ public class ArrayList<T> implements List<T> {
     /** add method, takes in an item and an index of where the item should be added to
      * @param integer pos for the index of where the item should be added
      * @param T item, data that's being added
+     * @throws out of bounds exception
      */
     @Override
     public void add(int pos, T item) {
@@ -78,7 +77,10 @@ public class ArrayList<T> implements List<T> {
     }
 
     /** remove method, takes in an index of which the item at that index will be removed
+     *  shifts all elements to the left
      *  @param integer pos, index of the element that will be removed
+     *  @return T element that was removed
+     *  @throws out of bounds exception
      */
     @Override
     public T remove(int pos) {
@@ -87,6 +89,8 @@ public class ArrayList<T> implements List<T> {
         }
             
         T copy = arr[pos];
+
+        //Shifts every element starting with the index of the element that was removed to the left
         for (int i = pos; i < size - 1; i++){
             arr[i] = arr[i+1];
         }
@@ -96,6 +100,7 @@ public class ArrayList<T> implements List<T> {
 
     /** get method, takes in an index and returns the element at that index
      * @param integer pos, index of the element
+     * @throws out of bounds exception
      */
     @Override
     public T get(int pos) {
