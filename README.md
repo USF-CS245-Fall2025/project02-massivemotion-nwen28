@@ -1,3 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/J_c8sizy)
 # MassiveMotion
 CS 245 Project 02
+
+This project creates a visual representation of celestial bodies moving around a "star". It determines where a new celestial body should appear on the canvas, as well as the velocity of it, and each celestial body that is created moves along that line with the given velocity. The position of each celestial body is updated given by the timer delay that is taken from the property file. Once a celestial object has reached the end of the canvas, it is removed from the list and the canvas. The property file also contains the other information necessary for creating celestial objects such as its size. This project also contains realizations of 4 different types of lists: arraylist, linkedlist, doubly linkedlist, and dummy head linkedlist. These lists are used to keep track and contain all the celestial bodies that are created and removed. 
