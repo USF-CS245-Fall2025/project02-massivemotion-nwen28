@@ -33,7 +33,7 @@ public class ArrayList<T> implements List<T> {
      * grow_array method 
      * Doubles size of arraylist.
      */
-    protected void grow_array() {
+    private void grow_array() {
         T[] new_arr = (T[]) new Object[arr.length * 2];
         for (int i = 0; i < arr.length; i++){
             new_arr[i] = arr[i];
