@@ -23,7 +23,9 @@ public class LinkedList<T> implements List<T> {
         return size;
     }
 
-    /** add method, takes in an item and adds it to the list
+    /** 
+     * add method
+     * Takes in an item and adds it to the list.
      * @param T item data that is being added to list
      */
     @Override
@@ -34,7 +36,6 @@ public class LinkedList<T> implements List<T> {
             return true;
         }
 
-        // else
         Node<T> node = head;
         while (node.next != null){
             node = node.next;
@@ -46,8 +47,9 @@ public class LinkedList<T> implements List<T> {
         return true;
     }
 
-    /** add method, takes in an item and an index of where the item should be added to
-     *  and adds it
+    /** 
+     * add method
+     * Takes in an item and an index of where the item should be added to and adds it.
      * @param integer pos for the index of where the item should be added
      * @param T item, data that's being added
      * @throws out of bounds exception
@@ -58,16 +60,13 @@ public class LinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException("List index out of bounds");
         }
 
-        //Adding to the front
         if (pos == 0) {
 
-            //Newly created node becomes the new head
             Node<T> node = new Node(item);
             node.next = head;
             head = node;
         } else {
 
-            //Iterates through the list to the desired position and changes pointers
             Node<T> node = new Node(item);
             Node<T> prev = head;
             for (int i=0; i < pos- 1; i++){
@@ -79,8 +78,9 @@ public class LinkedList<T> implements List<T> {
         ++size;
     }
         
-    /** remove method, takes in an index of which the item at that index will be removed
-     *  and removes it
+    /** 
+     * remove method
+     * Takes in an index of which the item at that index will be removed and removes it.
      * @param integer pos, index of the element that will be removed
      * @throws out of bounds exception
      */
@@ -90,30 +90,28 @@ public class LinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException("List index out of bounds");
         }
         
-        //Remmoving the first element
         if (pos == 0) {
 
-            //head.next becomes the new head
             Node<T> node = head;
             head = head.next;
             --size;
             return node.data;
         }
 
-        //Traverses through the list
         Node<T> prev = head;
         for (int i = 0; i < pos-1; i++){
             prev = prev.next;
         }
         
-        //Connects prev.next with current.next 
         Node<T> current = prev.next;
         prev.next = current.next;
         --size;
         return current.data;
     }
 
-    /** get method, takes in an index and returns the element at that index
+    /** 
+     * get method
+     * Takes in an index and returns the element at that index.
      * @param integer pos, index of the element
      * @throws out of bounds exception
      */
@@ -125,7 +123,6 @@ public class LinkedList<T> implements List<T> {
 
         Node<T> current = head;
 
-        //Moves current node to the next node until it reaches the desired index/position
         for(int i = 0; i < pos; i++){
             current = current.next;
         }
@@ -141,15 +138,18 @@ public class LinkedList<T> implements List<T> {
     private class ListIterator implements Iterator<T> {
         private Node<T> node = head;
     
-        /** hasNext method, checks if the next node
-         *  is null or not
+        /** 
+         * hasNext method
+         * Checks if the next node is null or not.
          */
         @Override
         public boolean hasNext() {
             return node != null;
         }
     
-        /** next method, moves to the next node
+        /** 
+         * next method
+         * Moves to the next node.
          * @return T data
          * @throws out of bounds exception
          */
