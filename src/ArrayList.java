@@ -29,11 +29,12 @@ public class ArrayList<T> implements List<T> {
         return size;
     }
 
-    /** grow_array method doubles size of arraylist
-     * 
+    /** 
+     * grow_array method 
+     * Doubles size of arraylist.
      */
     protected void grow_array() {
-    T[] new_arr = (T[]) new Object[arr.length * 2];
+        T[] new_arr = (T[]) new Object[arr.length * 2];
         for (int i = 0; i < arr.length; i++){
             new_arr[i] = arr[i];
         }
@@ -41,7 +42,9 @@ public class ArrayList<T> implements List<T> {
         arr = new_arr;
     }
 
-    /** add method, takes in an item and adds it to the arraylist
+    /** 
+     * add method
+     * Takes in an item and adds it to the arraylist.
      * @param T item data that is being added to arraylist
      */
     @Override
@@ -54,7 +57,9 @@ public class ArrayList<T> implements List<T> {
         return true;
     }
 
-    /** add method, takes in an item and an index of where the item should be added to
+    /** 
+     * add method
+     * Takes in an item and an index of where the item should be added to.
      * @param integer pos for the index of where the item should be added
      * @param T item, data that's being added
      * @throws out of bounds exception
@@ -76,11 +81,12 @@ public class ArrayList<T> implements List<T> {
         ++size;
     }
 
-    /** remove method, takes in an index of which the item at that index will be removed
-     *  shifts all elements to the left
-     *  @param integer pos, index of the element that will be removed
-     *  @return T element that was removed
-     *  @throws out of bounds exception
+    /** 
+     * remove method
+     * Takes in an index of which the item at that index will be removed shifts all elements to the left.
+     * @param integer pos, index of the element that will be removed
+     * @return T element that was removed
+     * @throws out of bounds exception
      */
     @Override
     public T remove(int pos) {
@@ -90,7 +96,6 @@ public class ArrayList<T> implements List<T> {
             
         T copy = arr[pos];
 
-        //Shifts every element starting with the index of the element that was removed to the left
         for (int i = pos; i < size - 1; i++){
             arr[i] = arr[i+1];
         }
@@ -98,7 +103,9 @@ public class ArrayList<T> implements List<T> {
         return copy;
     }
 
-    /** get method, takes in an index and returns the element at that index
+    /** 
+     * get method
+     * Takes in an index and returns the element at that index.
      * @param integer pos, index of the element
      * @throws out of bounds exception
      */
